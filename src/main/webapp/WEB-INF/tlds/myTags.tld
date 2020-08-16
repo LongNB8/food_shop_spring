@@ -1,0 +1,19 @@
+<taglib  xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd" version="2.0">
+        <tlib-version>1.0</tlib-version>
+        <short-name>Tab Library</short-name>
+        <uri>http://trangcualong.net</uri>
+
+        <tag>
+            <name>SliderHome</name>
+            <tag-class>com.example.food_shop_spring.Tags.SliderTags</tag-class>
+            <body-content>empty</body-content>
+        </tag>
+
+        <tag>
+            <name>lastestProduct</name>
+            <tag-class>com.example.ecomic_shop.tags.LastestProductTag</tag-class>
+            <body-content>empty</body-content>
+        </tag>
+</taglib>
