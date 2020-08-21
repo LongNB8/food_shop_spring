@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <!--    khung-->
+
+
+
+    <definition name="home.blog.index" extends="template_layout">
+        <put-attribute name="content" value="/WEB-INF/views/home/blog/index.jsp" />
+    </definition>
+
+    <definition name="home.blog.add" extends="template_layout">
+        <put-attribute name="content" value="/WEB-INF/views/home/blog/add.jsp" />
+    </definition>
+
+    <definition name="home.blog.details" extends="template_layout">
+        <put-attribute name="content" value="/WEB-INF/views/home/blog/details.jsp" />
+    </definition>
+
+    <definition name="home.blog.details1" extends="template_layout">
+        <put-attribute name="content" value="/WEB-INF/views/home/blog/details1.jsp" />
+    </definition>
+
+
+
+
+
+</tiles-definitions>

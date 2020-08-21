@@ -5,13 +5,21 @@
 <tiles-definitions>
     <!--    khung-->
 
+    <definition name="template_layout" template="/WEB-INF/views/templates/template_layout.jsp">
+        <put-attribute name="content" value="" />
+    </definition>
 
-    <definition name="home.product.details" extends="template_user">
+
+    <definition name="home.product.details" extends="template_layout">
         <put-attribute name="content" value="/WEB-INF/views/home/product/details.jsp" />
     </definition>
 
-    <definition name="home.product.product_of_category" extends="template_user">
+    <definition name="home.product.product_of_category" extends="template_layout">
         <put-attribute name="content" value="/WEB-INF/views/home/product/product_of_category.jsp" />
+    </definition>
+
+    <definition name="home.product.search" extends="template_layout">
+        <put-attribute name="content" value="/WEB-INF/views/home/product/search.jsp" />
     </definition>
 
 

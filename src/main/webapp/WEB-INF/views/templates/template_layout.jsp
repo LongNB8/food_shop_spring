@@ -1,37 +1,516 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" isELIgnored="false" %>
-<section id="slider-area">
+<%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+
+<%@taglib prefix="s" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Code Proudly Presents By Themexpert</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/user/css/nivo-slider.css" type="text/css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/user/css/owl.carousel.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/user/css/owl.theme.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/user/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/user/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/user/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/user/css/responsive.css">
+
+
+    <style type="text/css">
+
+
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+        /* Style the sidenav links and the dropdown button */
+        .sidenav a, .dropdown-btn {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #818181;
+            display: block;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+        }
+
+
+
+        /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+        .dropdown-container {
+            display: none;
+            background-color: white;
+            padding-left: 8px;
+        }
+
+        /* Optional: Style the caret down icon */
+        .fa-caret-down {
+            float: right;
+            padding-right: 8px;
+        }
+
+        /* Some media queries for responsiveness */
+        @media screen and (max-height: 450px) {
+            .sidenav {padding-top: 15px;}
+            .sidenav a {font-size: 18px;}
+
+    </style>
+
+
+</head>
+<body>
+
+
+<!-- TOP HEADER Start
+    ================================================== -->
+
+<section id="top">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div id="slider" class="nivoSlider">
-                    <img src="images/slider.jpg" alt="" style="width: 1120px; visibility: hidden;">
-                    <img src="images/slider1.jpg" alt="" style="width: 1120px; visibility: hidden;">
-                    <img src="images/slider2.jpg" alt="" style="width: 1120px; visibility: hidden;">
-                    <img class="nivo-main-image" src="images/slider.jpg" style="display: inline; height: 475px; width: 1120px; overflow: hidden;">
-                    <div class="nivo-caption"></div>
-                    <div class="nivo-directionNav">
-                        <a class="nivo-prevNav">Prev</a><a class="nivo-nextNav">Next</a>
-                    </div>
-                    <div class="nivo-slice" name="0" style="left: 0px; width: 1120px; height: 475px; opacity: 0.0211892; overflow: hidden;"><img src="images/slider1.jpg" style="position:absolute; width:1120px; height:auto; display:block !important; top:0; left:-0px;"></div>
-                    <div class="nivo-slice" name="1" style="left: 75px; width: 75px; height: 475px; opacity: 0; overflow: hidden;"><img src="images/slider1.jpg" style="position:absolute; width:1120px; height:auto; display:block !important; top:0; left:-75px;"></div>
-                    <div class="nivo-slice" name="2" style="left: 150px; width: 75px; height: 475px; opacity: 0; overflow: hidden;"><img src="images/slider1.jpg" style="position:absolute; width:1120px; height:auto; display:block !important; top:0; left:-150px;"></div>
-                    <div class="nivo-slice" name="3" style="left: 225px; width: 75px; height: 475px; opacity: 0; overflow: hidden;"><img src="images/slider1.jpg" style="position:absolute; width:1120px; height:auto; display:block !important; top:0; left:-225px;"></div>
-                    <div class="nivo-slice" name="4" style="left: 300px; width: 75px; height: 475px; opacity: 0; overflow: hidden;"><img src="images/slider1.jpg" style="position:absolute; width:1120px; height:auto; display:block !important; top:0; left:-300px;"></div>
-                    <div class="nivo-slice" name="5" style="left: 375px; width: 75px; height: 475px; opacity: 0; overflow: hidden;"><img src="images/slider1.jpg" style="position:absolute; width:1120px; height:auto; display:block !important; top:0; left:-375px;"></div>
-                    <div class="nivo-slice" name="6" style="left: 450px; width: 75px; height: 475px; opacity: 0; overflow: hidden;"><img src="images/slider1.jpg" style="position:absolute; width:1120px; height:auto; display:block !important; top:0; left:-450px;"></div>
-                    <div class="nivo-slice" name="7" style="left: 525px; width: 75px; height: 475px; opacity: 0; overflow: hidden;"><img src="images/slider1.jpg" style="position:absolute; width:1120px; height:auto; display:block !important; top:0; left:-525px;"></div>
-                    <div class="nivo-slice" name="8" style="left: 600px; width: 75px; height: 475px; opacity: 0; overflow: hidden;"><img src="images/slider1.jpg" style="position:absolute; width:1120px; height:auto; display:block !important; top:0; left:-600px;"></div>
-                    <div class="nivo-slice" name="9" style="left: 675px; width: 75px; height: 475px; opacity: 0; overflow: hidden;"><img src="images/slider1.jpg" style="position:absolute; width:1120px; height:auto; display:block !important; top:0; left:-675px;"></div>
-                    <div class="nivo-slice" name="10" style="left: 750px; width: 75px; height: 475px; opacity: 0; overflow: hidden;"><img src="images/slider1.jpg" style="position:absolute; width:1120px; height:auto; display:block !important; top:0; left:-750px;"></div>
-                    <div class="nivo-slice" name="11" style="left: 825px; width: 75px; height: 475px; opacity: 0; overflow: hidden;"><img src="images/slider1.jpg" style="position:absolute; width:1120px; height:auto; display:block !important; top:0; left:-825px;"></div>
-                    <div class="nivo-slice" name="12" style="left: 900px; width: 75px; height: 475px; opacity: 0; overflow: hidden;"><img src="images/slider1.jpg" style="position:absolute; width:1120px; height:auto; display:block !important; top:0; left:-900px;"></div>
-                    <div class="nivo-slice" name="13" style="left: 975px; width: 75px; height: 475px; opacity: 0; overflow: hidden;"><img src="images/slider1.jpg" style="position:absolute; width:1120px; height:auto; display:block !important; top:0; left:-975px;"></div>
-                    <div class="nivo-slice" name="14" style="left: 1050px; width: 70px; height: 475px; opacity: 0; overflow: hidden;"><img src="images/slider1.jpg" style="position:absolute; width:1120px; height:auto; display:block !important; top:0; left:-1050px;"></div>
+            <div class="col-md-7">
+                <p class="contact-action"><i class="fa fa-phone-square"></i>IN CASE OF ANY QUESTIONS, CALL THIS NUMBER: <strong>+565 975 658</strong></p>
+            </div>
+            <div class="col-md-3 clearfix">
+                <ul class="login-cart">
+                    <li>
+                        <a data-toggle="modal" data-target="#myModal" href="#">
+                            <i class="fa fa-user"></i>
+                            ${sessionScope.username}
+                            <%
+                                if (session.getAttribute("username") == null){ %>
+                                    Login
+                                <% } %>
+
+                        </a>
+                    </li>
+                    <li>
+                        <div class="cart dropdown">
+                            <a data-toggle="dropdown" href="#"><i class="fa fa-shopping-cart"></i>Cart(${countItem})</a>
+                            <div class="dropdown-menu dropup">
+                                <span class="caret"></span>
+                                <h2342 style="color:red;">
+                                    <c:if test="${countItem == 0}">Cart is empty!</c:if><br>
+                                    <c:if test="${sessionScope.username == null}">${mess1}</c:if>
+                                </h2342>
+                                <form action="${pageContext.request.contextPath}/product/checkount" method="post">
+                                <ul class="media-list">
+                                    <c:forEach var="item" items="${sessionScope.cart}" varStatus="i">
+                                    <li class="media">
+
+                                        <img class="pull-left" src="${pageContext.request.contextPath}/uploads/images/${item.photo.name}" alt="">
+                                        <div class="media-body">
+                                            <h6>${item.product.name}  <span>${item.quantity * item.product.price}</span><br>
+                                                <a class="btn btn-danger" href="${pageContext.request.contextPath}/product/cart/remove/${i.index}"><i class="icon-remove icon-white"></i></a>
+                                            </h6>
+
+
+                                        </div>
+
+
+                                    </li>
+                                    </c:forEach>
+                                    <li class="media">
+                                        <div class="media-body">
+                                            <h6 ><h1231 style="margin: 50px">TOTAL : ${total}</h1231>
+
+                                        </h6><p></p>
+
+                                        <button class="btn btn-primary btn-sm">Checkout</button>
+
+                                    </div></li>
+
+                                </ul>
+                                </form>
+
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <s:form action="${pageContext.request.contextPath}/product/search" method="post">
+            <div class="col-md-2">
+
+                <div class="search-box">
+                    <div class="input-group">
+                        <input placeholder="Search Here" type="text" class="form-control" name="search">
+                        <span class="input-group-btn">
+					        	<button class="btn btn-default" type="submit"></button>
+					      	</span>
+
+                    </div><!-- /.input-group -->
+                </div><!-- /.search-box -->
+
+            </div>
+            </s:form>
+        </div> <!-- End Of /.row -->
+    </div>	<!-- End Of /.Container -->
+
+
+    <!-- MODAL Start
+        ================================================== -->
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Introduce Yourself</h4>
                 </div>
-                <div class="nivo-controlNav"><a class="nivo-control" rel="0">1</a><a class="nivo-control active" rel="1">2</a><a class="nivo-control" rel="2">3</a></div>
+                <div class="modal-body clearfix">
+
+                    <form action="#" method="post" id="create-account_form" class="std">
+                        <fieldset>
+                            <h3>Create your account</h3>
+                            <div class="form_content clearfix">
+                                <h4>Enter your e-mail address to create an account.</h4>
+                                <p class="text">
+                                    <label for="email_create">E-mail address</label>
+                                    <span>
+											<input placeholder="E-mail address"  type="text" id="email_create" name="email_create" value="" class="account_input">
+					                    </span>
+                                </p>
+                                <p class="submit">
+                                    <button class="btn btn-primary">Create Your Account</button>
+                                </p>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <form action="${pageContext.request.contextPath}/login" method="post" id="login_form" class="std">
+                        <fieldset>
+                            <h3>Already registered?</h3>
+                            <div class="form_content clearfix">
+                                <p style="color: red">${sessionScope.mess} </p>
+                                <p class="text">
+                                    <label for="username">E-mail address</label>
+                                    <span><input placeholder="E-mail address" type="text" id="username" name="username" value="" class="account_input"></span>
+                                </p>
+                                <p class="text">
+                                    <label for="password">Password</label>
+                                    <span><input placeholder="Password" type="password" id="password" name="password" value="" class="account_input"></span>
+                                </p>
+                                <p class="lost_password">
+                                    <a href="#popab-password-reset" class="popab-password-link">Forgot your password?</a>
+                                </p>
+                                <p class="submit">
+                                    <button class="btn btn-success">Log in</button>
+                                </p>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</section>
+</section>  <!-- End of /Section -->
 
+
+
+<!-- LOGO Start
+================================================== -->
+
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <a href="#">
+                    <img src="${pageContext.request.contextPath}/resources/user/images/logo.png" alt="logo">
+                </a>
+            </div>	<!-- End of /.col-md-12 -->
+        </div>	<!-- End of /.row -->
+    </div>	<!-- End of /.container -->
+</header> <!-- End of /Header -->
+
+
+
+
+<!-- MENU Start
+================================================== -->
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div> <!-- End of /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav nav-main">
+                <li class="active"><a href="#">HOME</a></li>
+                <li><a href="${pageContext.request.contextPath}/product">SHOP</a></li>
+                <li><a href="${pageContext.request.contextPath}/blog">BLOG</a></li>
+                <li><a href="blog-single.html">ARTICLE</a></li>
+                <li class="dropdown">
+                    <a href="#">
+                        PAGES
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a  href="#">Action</a></li>
+                        <li><a  href="#">Another action</a></li>
+                        <li><a  href="#">Something else here</a></li>
+                        <li><a  href="#">Separated link</a></li>
+                    </ul>
+                </li> <!-- End of /.dropdown -->
+
+
+            </ul> <!-- End of /.nav-main -->
+        </div>	<!-- /.navbar-collapse -->
+    </div>	<!-- /.container-fluid -->
+</nav>	<!-- End of /.nav -->
+
+
+<!-- SLIDER Start
+================================================== -->
+
+
+<%--content--%>
+<tiles:insertAttribute name="content"></tiles:insertAttribute>
+
+
+
+
+
+
+
+<!-- CALL TO ACTION Start
+================================================== -->
+
+
+
+<!-- FOOTER Start
+================================================== -->
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="block clearfix">
+                    <a href="#">
+                        <img src="${pageContext.request.contextPath}/resources/user/images/footer-logo.png" alt="">
+                    </a>
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                    </p>
+                    <h4 class="connect-heading">CONNECT WITH US</h4>
+                    <ul class="social-icon">
+                        <li>
+                            <a class="facebook-icon" href="#">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="plus-icon" href="#">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="twitter-icon" href="#">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="pinterest-icon" href="#">
+                                <i class="fa fa-pinterest"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="linkedin-icon" href="#">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </li>
+                    </ul>	<!-- End Of /.social-icon -->
+                </div>	<!-- End Of /.block -->
+            </div> <!-- End Of /.Col-md-4 -->
+            <div class="col-md-4">
+                <div class="block">
+                    <h4>GET IN TOUCH</h4>
+                    <p ><i class="fa  fa-map-marker"></i> <span>Food Code d.o.o.,</span>1000 Ljubljana Celovska cesta 135, Slovenia</p>
+                    <p> <i class="fa  fa-phone"></i> <span>Phone:</span> (+386) 40 123 456 </p>
+
+                    <p> <i class="fa  fa-mobile"></i> <span>Mobile:</span> (+386) 40 654 123 651</p>
+
+                    <p class="mail"><i class="fa  fa-envelope"></i>Eamil: <span>info@sitename.com</span></p>
+                </div>	<!-- End Of /.block -->
+            </div> <!-- End Of Col-md-3 -->
+            <div class="col-md-4">
+                <div class="block">
+                    <h4>UPCOMING ITEMS</h4>
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object" src="${pageContext.request.contextPath}/resources/user/images/product-item.jpg" alt="...">
+                        </a>
+                        <a class="pull-left" href="#">
+                            <img class="media-object" src="${pageContext.request.contextPath}/resources/user/images/product-item.jpg" alt="...">
+                        </a>
+                        <a class="pull-left" href="#">
+                            <img class="media-object" src="${pageContext.request.contextPath}/resources/user/images/product-item.jpg" alt="...">
+                        </a>
+                        <a class="pull-left" href="#">
+                            <img class="media-object" src="${pageContext.request.contextPath}/resources/user/images/product-item.jpg" alt="...">
+                        </a>
+                        <a class="pull-left" href="#">
+                            <img class="media-object" src="${pageContext.request.contextPath}/resources/user/images/product-item.jpg" alt="...">
+                        </a>
+                        <a class="pull-left" href="#">
+                            <img class="media-object" src="${pageContext.request.contextPath}/resources/user/images/product-item.jpg" alt="...">
+                        </a>
+                    </div>	<!-- End Of /.media -->
+                </div>	<!-- End Of /.block -->
+            </div> <!-- End Of Col-md-3 -->
+        </div> <!-- End Of /.row -->
+    </div> <!-- End Of /.Container -->
+
+
+
+    <!-- FOOTER-BOTTOM Start
+    ================================================== -->
+
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="cash-out pull-left">
+                        <li>
+                            <a href="#">
+                                <img src="${pageContext.request.contextPath}/resources/user/images/American-Express.png" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="${pageContext.request.contextPath}/resources/user/images/PayPal.png" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="${pageContext.request.contextPath}/resources/user/images/Maestro.png" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="${pageContext.request.contextPath}/resources/user/images/Visa.png" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="${pageContext.request.contextPath}/resources/user/images/Visa-Electron.png" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright-text pull-right">Food Code @2013 Designed by <a href="http://www.themexpert.com">Themexpert</a> All Rights Reserved</p>
+                </div>	<!-- End Of /.col-md-12 -->
+            </div>	<!-- End Of /.row -->
+        </div>	<!-- End Of /.container -->
+    </div>	<!-- End Of /.footer-bottom -->
+</footer> <!-- End Of Footer -->
+
+<a id="back-top" href="#"></a>
+
+
+<script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("list-group-item");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
+</script>
+
+<%--<script>--%>
+<%--    $(document).ready(function() {--%>
+<%--        var pageItem = $(".pagination li").not(".prev,.next");--%>
+<%--        var prev = $(".pagination li.prev");--%>
+<%--        var next = $(".pagination li.next");--%>
+
+<%--        pageItem.click(function() {--%>
+<%--            pageItem.removeClass("active");--%>
+<%--            $(this).not(".prev,.next").addClass("active");--%>
+<%--        });--%>
+
+<%--        next.click(function() {--%>
+<%--            $('li.active').removeClass('active').next().addClass('active');--%>
+<%--        });--%>
+
+<%--        prev.click(function() {--%>
+<%--            $('li.active').removeClass('active').prev().addClass('active');--%>
+<%--        });--%>
+
+
+<%--    });--%>
+<%--</script>--%>
+
+
+
+<!-- jS -->
+<script src="${pageContext.request.contextPath}/resources/user/js/jquery.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/user/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/user/js/jquery.nivo.slider.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/user/js/owl.carousel.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/user/js/jquery.nicescroll.js"></script>
+<script src="${pageContext.request.contextPath}/resources/user/js/jquery.scrollUp.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/user/js/main.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/user/js/jquery.twbsPagination.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/user/js/jquery.twbsPagination.min.js" type="text/javascript"></script>
+
+
+
+<script>
+    $(function () {
+        var totalPages = ${totalPage};
+        var currentPage = ${page}
+
+        window.pagObj = $('#pagination').twbsPagination({
+            totalPages: totalPages,
+            visiblePages: 2,
+            startPage : currentPage ,
+            onPageClick: function (event, page) {
+                if (currentPage != page) {
+                    $('#page').val(page);
+                    $('#formSubmit').submit();
+                }
+            }
+        })
+    });
+</script>
+
+
+</body>
+</html>

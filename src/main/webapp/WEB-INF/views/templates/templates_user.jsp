@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" isELIgnored="false" %>
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-<%@ taglib prefix="slider" uri="http://trangcualong.net" %>
 
+<%@taglib prefix="s" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <!doctype html>
@@ -25,14 +26,58 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/user/css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/user/css/responsive.css">
 
-    <!-- jS -->
-    <script src="${pageContext.request.contextPath}/resources/user/js/jquery.min.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/resources/user/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/resources/user/js/jquery.nivo.slider.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/resources/user/js/owl.carousel.min.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/resources/user/js/jquery.nicescroll.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/user/js/jquery.scrollUp.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/user/js/main.js" type="text/javascript"></script>
+
+    <style type="text/css">
+
+
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+        /* Style the sidenav links and the dropdown button */
+        .sidenav a, .dropdown-btn {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #818181;
+            display: block;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+        }
+
+
+
+        /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+        .dropdown-container {
+            display: none;
+            background-color: white;
+            padding-left: 8px;
+        }
+
+        /* Optional: Style the caret down icon */
+        .fa-caret-down {
+            float: right;
+            padding-right: 8px;
+        }
+
+        /* Some media queries for responsiveness */
+        @media screen and (max-height: 450px) {
+            .sidenav {padding-top: 15px;}
+            .sidenav a {font-size: 18px;}
+
+    </style>
 
 
 </head>
@@ -53,40 +98,73 @@
                     <li>
                         <a data-toggle="modal" data-target="#myModal" href="#">
                             <i class="fa fa-user"></i>
+                            ${sessionScope.username}
+                            <%
+                                if (session.getAttribute("username") == null){ %>
                             Login
+                            <% } %>
+
                         </a>
                     </li>
                     <li>
                         <div class="cart dropdown">
-                            <a data-toggle="dropdown" href="#"><i class="fa fa-shopping-cart"></i>Cart(1)</a>
+                            <a data-toggle="dropdown" href="#"><i class="fa fa-shopping-cart"></i>Cart(${countItem})</a>
                             <div class="dropdown-menu dropup">
                                 <span class="caret"></span>
-                                <ul class="media-list">
-                                    <li class="media">
-                                        <img class="pull-left" src="${pageContext.request.contextPath}/resources/user/images/product-item.jpg" alt="">
-                                        <div class="media-body">
-                                            <h6>Italian Sauce
-                                                <span>$250</span>
-                                            </h6>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <button class="btn btn-primary btn-sm">Checkout</button>
+                                <h2342 style="color:red;">
+                                    <c:if test="${countItem == 0}">Cart is empty!</c:if><br>
+                                    <c:if test="${sessionScope.username == null}">${mess1}</c:if>
+                                </h2342>
+                                <form action="${pageContext.request.contextPath}/product/checkount" method="post">
+                                    <ul class="media-list">
+                                        <c:forEach var="item" items="${sessionScope.cart}" varStatus="i">
+                                            <li class="media">
+
+                                                <img class="pull-left" src="${pageContext.request.contextPath}/uploads/images/${item.photo.name}" alt="">
+                                                <div class="media-body">
+                                                    <h6>${item.product.name}  <span>${item.quantity * item.product.price}</span><br>
+                                                        <a class="btn btn-danger" href="${pageContext.request.contextPath}/product/cart/remove/${i.index}"><i class="icon-remove icon-white"></i></a>
+                                                    </h6>
+
+
+                                                </div>
+
+
+                                            </li>
+                                        </c:forEach>
+                                        <li class="media">
+                                            <div class="media-body">
+                                                <h6 ><h1231 style="margin: 50px">TOTAL : ${total}</h1231>
+
+                                                </h6><p></p>
+
+                                                <button class="btn btn-primary btn-sm">Checkout</button>
+
+                                            </div></li>
+
+                                    </ul>
+                                </form>
+
                             </div>
                         </div>
                     </li>
                 </ul>
             </div>
-            <div class="col-md-2">
-                <div class="search-box">
-                    <div class="input-group">
-                        <input placeholder="Search Here" type="text" class="form-control">
-                        <span class="input-group-btn">
-					        	<button class="btn btn-default" type="button"></button>
+            <s:form action="${pageContext.request.contextPath}/product/search" method="post">
+                <div class="col-md-2">
+
+                    <div class="search-box">
+                        <div class="input-group">
+                            <input placeholder="Search Here" type="text" class="form-control" name="search">
+                            <span class="input-group-btn">
+					        	<button class="btn btn-default" type="submit"></button>
 					      	</span>
-                    </div><!-- /.input-group -->
-                </div><!-- /.search-box -->
-            </div>
+
+                        </div><!-- /.input-group -->
+                    </div><!-- /.search-box -->
+
+                </div>
+            </s:form>
         </div> <!-- End Of /.row -->
     </div>	<!-- End Of /.Container -->
 
@@ -120,17 +198,18 @@
                             </div>
                         </fieldset>
                     </form>
-                    <form action="" method="post" id="login_form" class="std">
+                    <form action="${pageContext.request.contextPath}/login" method="post" id="login_form" class="std">
                         <fieldset>
                             <h3>Already registered?</h3>
                             <div class="form_content clearfix">
+                                <p style="color: red">${sessionScope.mess} </p>
                                 <p class="text">
-                                    <label for="email">E-mail address</label>
-                                    <span><input placeholder="E-mail address" type="text" id="email" name="email" value="" class="account_input"></span>
+                                    <label for="username">E-mail address</label>
+                                    <span><input placeholder="E-mail address" type="text" id="username" name="username" value="" class="account_input"></span>
                                 </p>
                                 <p class="text">
-                                    <label for="passwd">Password</label>
-                                    <span><input placeholder="Password" type="password" id="passwd" name="passwd" value="" class="account_input"></span>
+                                    <label for="password">Password</label>
+                                    <span><input placeholder="Password" type="password" id="password" name="password" value="" class="account_input"></span>
                                 </p>
                                 <p class="lost_password">
                                     <a href="#popab-password-reset" class="popab-password-link">Forgot your password?</a>
@@ -187,7 +266,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav nav-main">
                 <li class="active"><a href="#">HOME</a></li>
-                <li><a href="products.html">SHOP</a></li>
+                <li><a href="${pageContext.request.contextPath}/product">SHOP</a></li>
                 <li><a href="blog.html">BLOG</a></li>
                 <li><a href="blog-single.html">ARTICLE</a></li>
                 <li class="dropdown">
@@ -212,7 +291,7 @@
 
 <!-- SLIDER Start
 ================================================== -->
-<slider:SliderHome/>
+
 
 <%--content--%>
 <tiles:insertAttribute name="content"></tiles:insertAttribute>
@@ -355,5 +434,83 @@
 </footer> <!-- End Of Footer -->
 
 <a id="back-top" href="#"></a>
+
+
+<script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("list-group-item");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
+</script>
+
+<%--<script>--%>
+<%--    $(document).ready(function() {--%>
+<%--        var pageItem = $(".pagination li").not(".prev,.next");--%>
+<%--        var prev = $(".pagination li.prev");--%>
+<%--        var next = $(".pagination li.next");--%>
+
+<%--        pageItem.click(function() {--%>
+<%--            pageItem.removeClass("active");--%>
+<%--            $(this).not(".prev,.next").addClass("active");--%>
+<%--        });--%>
+
+<%--        next.click(function() {--%>
+<%--            $('li.active').removeClass('active').next().addClass('active');--%>
+<%--        });--%>
+
+<%--        prev.click(function() {--%>
+<%--            $('li.active').removeClass('active').prev().addClass('active');--%>
+<%--        });--%>
+
+
+<%--    });--%>
+<%--</script>--%>
+
+
+
+<!-- jS -->
+<script src="${pageContext.request.contextPath}/resources/user/js/jquery.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/user/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/user/js/jquery.nivo.slider.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/user/js/owl.carousel.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/user/js/jquery.nicescroll.js"></script>
+<script src="${pageContext.request.contextPath}/resources/user/js/jquery.scrollUp.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/user/js/main.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/user/js/jquery.twbsPagination.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resources/user/js/jquery.twbsPagination.min.js" type="text/javascript"></script>
+
+
+
+<script>
+    $(function () {
+        var totalPages = ${totalPage};
+        var currentPage = ${page}
+
+            window.pagObj = $('#pagination').twbsPagination({
+                totalPages: totalPages,
+                visiblePages: 2,
+                startPage : currentPage ,
+                onPageClick: function (event, page) {
+                    if (currentPage != page) {
+                        $('#page').val(page);
+                        $('#formSubmit').submit();
+                    }
+                }
+            })
+    });
+</script>
+
+
 </body>
 </html>

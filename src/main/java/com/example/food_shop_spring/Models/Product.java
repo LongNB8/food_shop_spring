@@ -32,7 +32,7 @@ public class Product {
     @JoinColumn(name="category_id")
     private Category category;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product", cascade = CascadeType.ALL)
     private List<PhotoPr> photos = new ArrayList<>();
 
 

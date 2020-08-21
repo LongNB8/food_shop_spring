@@ -2,9 +2,12 @@ package com.example.food_shop_spring.Services;
 
 import com.example.food_shop_spring.Models.PhotoPr;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface PhotoProService {
+
+    List<PhotoPr> findByProductId(int product_id, boolean main);
     <S extends PhotoPr> S save(S s);
 
     <S extends PhotoPr> Iterable<S> saveAll(Iterable<S> iterable);

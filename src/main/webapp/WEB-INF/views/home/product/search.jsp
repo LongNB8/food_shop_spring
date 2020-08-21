@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" isELIgnored="false" %>
-
 <section id="topic-header">
     <div class="container">
         <div class="row">
@@ -23,21 +22,20 @@
 <section id="shop">
     <div class="container">
         <div class="row">
-            <form action="${pageContext.request.contextPath}/product/?page=${page}" method="get" id="formSubmit">
             <div class="col-md-9">
                 <div class="products-heading">
                     <h2>NEW PRODUCTS </h2>
                 </div>	<!-- End of /.Products-heading -->
                 <div class="product-grid">
                     <ul>
-                        <c:forEach var="product" items="${page1}">
+                        <c:forEach var="product" items="${product}">
                             <c:set var="photo" value="${product.getPhotos().stream().filter(p -> p.isStatus() && p.isMain()).findFirst().get()}"></c:set>
                         <li>
                             <div class="products">
-                                <a href="${pageContext.request.contextPath}/product/details/${product.id}">
+                                <a href="#">
                                     <img src="${pageContext.request.contextPath}/uploads/images/${photo.name}" alt="">
                                 </a>
-                                <a href="${pageContext.request.contextPath}/product/details/${product.id}">
+                                <a href="#">
                                     <h4>${product.name}</h4>
                                 </a>
                                 <p class="price">From: £${product.price}</p>
@@ -54,42 +52,17 @@
 
                 <!-- Pagination -->
 
-<%--                <nav>--%>
-<%--                    <ul class="pagination">--%>
-
-<%--                        <li class="prev">--%>
-<%--                            <a href="#" aria-label="Previous">--%>
-<%--                                <span aria-hidden="true">&laquo;</span>--%>
-<%--                            </a>--%>
-<%--                        </li>--%>
-
-<%--                        <c:forEach var="d" begin="1" end="4">--%>
-<%--                            <c:if test="${d==1}" ><li class="active"><a href="#">${d}</a></c:if>--%>
-<%--                            <c:if test="${d>1}"><li><a href="#">${d}</a></c:if>--%>
-
-<%--                        </li>--%>
-
-
-<%--                        <li class="next">--%>
-<%--                            <a href="#" aria-label="Next">--%>
-<%--                                <span aria-hidden="true">&raquo;</span>--%>
-<%--                            </a>--%>
-<%--                        </li>--%>
-<%--                        </c:forEach>--%>
-
-<%--                    </ul>--%>
-<%--                </nav>--%>
-
-
-
-
-                <ul class="pagination" id="pagination"></ul>
-
+                <div class="pagination-bottom">
+                    <ul class="pagination">
+                        <li class="disabled"><a href="#">«</a></li>
+                        <li class="active"><a href="#">1 <span class="sr-only"></span></a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">»</a></li>
+                    </ul>	<!-- End of /.pagination -->
+                </div>
             </div>	<!-- End of /.col-md-9 -->
-                <input type="hidden" value="" id="page" name="page">
-            </form>
-
-
             <div class="col-md-3">
                 <div class="blog-sidebar">
                     <div class="block">
@@ -158,5 +131,3 @@
         </div>	<!-- End of /.row -->
     </div>	<!-- End of /.container -->
 </section>
-
-

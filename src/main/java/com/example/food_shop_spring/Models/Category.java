@@ -33,6 +33,12 @@ public class Category {
     private List<Category> categories = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+    private List<Blog> blogs = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
     private List<Product> products = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+    private List<Comment> comments = new ArrayList<>();
 
 }

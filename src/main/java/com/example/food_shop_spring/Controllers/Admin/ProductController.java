@@ -7,6 +7,7 @@ import com.example.food_shop_spring.Services.CategoryService;
 import com.example.food_shop_spring.Services.ProductService;
 import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
+import java.awt.print.Pageable;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -34,7 +36,8 @@ public class ProductController implements ServletContextAware {
 
     @GetMapping
     public String index(ModelMap modelMap){
-        modelMap.addAttribute("products", productService.findAll());
+
+        modelMap.addAttribute("products", productService.findAll1());
         return "admin.product.index";
     }
 

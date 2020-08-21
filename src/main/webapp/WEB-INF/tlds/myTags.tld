@@ -11,9 +11,6 @@
             <body-content>empty</body-content>
         </tag>
 
-        <tag>
-            <name>lastestProduct</name>
-            <tag-class>com.example.ecomic_shop.tags.LastestProductTag</tag-class>
-            <body-content>empty</body-content>
-        </tag>
+
+
 </taglib>

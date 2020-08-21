@@ -25,10 +25,6 @@
         <put-attribute name="content" value="/WEB-INF/views/admin/login/accessDenied.jsp" />
     </definition>
 
-
-    <definition name="template_null" template="/WEB-INF/views/templates/template_null.jsp">
-        <put-attribute name="content" value="" />
-    </definition>
     <definition name="admin.account.profile" extends="template_admin">
         <put-attribute name="content" value="/WEB-INF/views/admin/account/profile.jsp" />
     </definition>

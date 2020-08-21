@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +21,21 @@ public class CategoryServiceImp implements  CategoryService {
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Autowired
+    private EntityManager entityManager;
+
+    @Override
+    public List<Category> listCategoryOur(boolean status, int n) {
+        return categoryRepository.listCategoryOur(status, n);
+    }
+
+    @Override
+    public List<Category> listCategoryOur1(boolean status, int n) {
+        List<Category> list  = entityManager.createQuery("from Category where status = :status order by id")
+                .setFirstResult(0).setMaxResults(n).setParameter("status", status).getResultList();
+        return list;
+    }
 
     @Override
     public List<Category> listSubCategory(int category_id) {

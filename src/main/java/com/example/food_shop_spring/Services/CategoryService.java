@@ -9,6 +9,9 @@ import java.util.Optional;
 
 public interface CategoryService {
 
+    List<Category> listCategoryOur(boolean status, int n);
+    List<Category> listCategoryOur1(boolean status, int n);
+
     List<Category> listSubCategory(int category_id);
 
     List<Category> findByParentCategory();
